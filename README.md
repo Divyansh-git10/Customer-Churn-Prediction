@@ -4,6 +4,16 @@ A complete end-to-end machine learning pipeline to predict customer churn using 
 This project covers data preprocessing, EDA, model development, rigorous evaluation, and an interactive web app built with Streamlit.
 
 
+> **Scope & status:** This repository demonstrates the **end-to-end ML workflow and engineering** (EDA → preprocessing → multi-model comparison → Streamlit deployment), **not** a reproducible benchmark. The original dataset is **proprietary and unavailable**, so the results here cannot be independently reproduced and the reported metrics should **not** be read as validated performance (see *Models Compared* below). A future version will be **rebuilt on a fully public churn dataset** for complete reproducibility.
+
+---
+
+## 📸 Streamlit App Screenshot
+
+![App Screenshot](app_screenshot.png)
+
+---
+
 ## 🧠 Problem Statement
 
 The goal is to accurately predict if a customer will churn, using anonymized behavioral data.
@@ -30,6 +40,8 @@ The goal is to accurately predict if a customer will churn, using anonymized beh
 - **Validation**: 5-Fold Cross-Validation
 - **Metrics Used**: ROC-AUC (primary), Accuracy, F1 Score, Confusion Matrix
 
+> **Note:** The original dataset is proprietary and therefore is not included in this repository.
+
 ---
 
 ## 🧪 Models Compared
@@ -43,13 +55,15 @@ The goal is to accurately predict if a customer will churn, using anonymized beh
 | Logistic Regression  | ~49%     | 0.49     | ~0.50   | Weak baseline          |
 
 
-## 🏆 Final Model: Random Forest Classifier
 
-- Training Accuracy: 100%
-- Test Accuracy: 100%
-- ROC-AUC: ~1.0
-- 5-Fold CV ROC-AUC: 0.9999999959
-- Confusion Matrix: `[[20020, 0], [1, 13383]]`
+> **Note on metrics:** the tree-based models reported near-perfect scores on the original proprietary dataset, but that result is **not trustworthy**. With the strongest feature-to-target correlation only ≈0.10, near-perfect accuracy across *every* model indicates a **data artifact (likely duplicate records and/or a leaked high-cardinality field)** rather than genuine predictive skill. Because the dataset is unavailable this can't be diagnosed or corrected here, so **no performance numbers are claimed**. The planned public-dataset rebuild will report honest, validated metrics.
+
+
+## 🏆 Final Model
+
+The Random Forest classifier was selected as the final model for the accompanying Streamlit application based on the original project evaluation.
+
+This repository focuses on demonstrating the end-to-end machine learning engineering workflow, including preprocessing, feature engineering, model comparison, evaluation, and deployment.
 
 
 ## 🔬 Model Interpretability
